@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>Agent Usage</title>
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <main>
+    <header class="header">
+      <div><p class="eyebrow">LOCAL OBSERVATIONS</p><h1>Agent Usage</h1><p id="scope">Observed sessions</p></div>
+      <button id="refresh" type="button" aria-label="Refresh observations">Refresh</button>
+    </header>
+    <div class="collection"><span id="collected">No collection yet</span><label><input id="auto" type="checkbox" checked> Refresh every 5 seconds</label></div>
+    <p id="notice" class="notice" hidden></p>
+    <div id="warnings" class="warnings" hidden></div>
+    <p class="status-context">Running status unavailable. This view reads saved transcripts.</p>
+    <div class="toolbar">
+      <label class="search">Find a session<input id="search" type="search" placeholder="Name, model, ID or workspace" autocomplete="off"></label>
+      <label>Provider<select id="provider"><option value="">All providers</option><option value="codex_cli">Codex CLI</option><option value="claude_code">Claude Code</option></select></label>
+      <label>Files modified<select id="lookback"><option value="1">24 hours</option><option value="7">7 days</option></select></label>
+      <label>Last transcript event<select id="recency"><option value="hour">Past hour</option><option value="day">Past 24 hours</option><option value="all">Any time in scanned files</option></select></label>
+    </div>
+    <div class="panes">
+      <section class="sessions" aria-labelledby="sessions-title"><div class="section-header"><h2 id="sessions-title">Recorded sessions</h2><span id="count"></span></div><p class="metric-note">Observation span: Includes gaps; not running time.</p><p id="empty" class="empty">Reading session observations…</p><ul id="sessions" class="session-list"></ul></section>
+      <section id="details" class="details" aria-labelledby="details-title"><h2 id="details-title">Session details</h2><p class="empty">Select a session to inspect its observations and reported usage.</p></section>
+    </div>
+    <footer>Recent observations do not establish that an agent is running. Usage is shown per session; parent and child totals are never added together.</footer>
+    <p id="announcer" class="sr-only" role="status" aria-live="polite"></p>
+  </main>
+</body>
+</html>
